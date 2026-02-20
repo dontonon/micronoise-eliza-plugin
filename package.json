@@ -1,0 +1,20 @@
+{
+  "name": "micronoise-eliza-plugin",
+  "version": "1.0.1",
+  "description": "MicroNoise swap plugin for ElizaOS - Token swaps via x402 payments",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "publish": "npm publish --access public"
+  },
+  "dependencies": {
+    "@elizaos/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "keywords": ["elizaos", "eliza", "plugin", "swap", "defi", "crypto", "x402"],
+  "license": "MIT"
+}

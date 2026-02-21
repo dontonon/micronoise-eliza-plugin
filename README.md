@@ -1,6 +1,6 @@
-# @micronoise/eliza-plugin
+# micronoise-eliza-plugin
 
-MicroNoise swap plugin for ElizaOS - Enable your AI agents to swap tokens with x402 payments.
+ElizaOS plugin for token swaps via x402 payments on Base chain.
 
 ## Features
 
@@ -8,6 +8,7 @@ MicroNoise swap plugin for ElizaOS - Enable your AI agents to swap tokens with x
 - **GET_QUOTE**: Get swap quotes without executing
 - **SwapProvider**: Real-time swap rates
 - **x402 Payments**: Automatic payment handling for swap fees
+- **Base Chain**: Built for Base network with Uniswap V3
 
 ## Installation
 
@@ -19,7 +20,7 @@ npm install micronoise-eliza-plugin
 
 ```typescript
 import { initializeRuntime } from "@elizaos/core";
-import { micronoisePlugin } from "@micronoise/eliza-plugin";
+import { micronoisePlugin } from "micronoise-eliza-plugin";
 
 // Initialize with plugin
 const runtime = await initializeRuntime({
@@ -62,11 +63,15 @@ await runtime.executeAction("GET_QUOTE", {
 
 ## Supported Tokens
 
-- ETH, WETH
-- BTC, WBTC
-- SOL
-- USDC, USDT, DAI
-- And more via Uniswap/DEX aggregators
+- ETH, WETH (Base)
+- WBTC (Wrapped Bitcoin)
+- SOL (via Wormhole)
+- USDC, USDT, DAI (Base)
+
+## API Endpoints
+
+- **Quote**: `https://micronoise.vercel.app/api/swap/quote?from=ETH&to=USDC&amount=0.1`
+- **Execute**: `https://micronoise.vercel.app/api/swap/execute?from=ETH&to=USDC&amount=0.1`
 
 ## Agent Persona Example
 
@@ -74,7 +79,7 @@ Add to your character file:
 
 ```json
 {
-  "plugins": ["@micronoise/eliza-plugin"],
+  "plugins": ["micronoise-eliza-plugin"],
   "style": {
     "all": [
       "can execute token swaps when user asks",
@@ -88,13 +93,15 @@ Add to your character file:
 ## Pricing
 
 - Quotes: Free
-- Swaps: Gas + 0.1% fee (paid via x402)
-- Agent usage: Free tier 100 swaps/day
+- Swaps: 0.001 USDC per swap (x402 payment)
+- Network: Base (eip155:8453)
 
 ## Documentation
 
-- [MicroNoise API](https://micronoise.vercel.app)
-- [ElizaOS Docs](https://docs.elizaos.ai)
+- **Swap Demo**: https://micronoise.vercel.app/swap
+- **API Docs**: https://micronoise.vercel.app
+- **ElizaOS Docs**: https://docs.elizaos.ai
+- **GitHub**: https://github.com/dontonon/micronoise-eliza-plugin
 
 ## License
 
